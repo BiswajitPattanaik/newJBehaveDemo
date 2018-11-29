@@ -17,10 +17,11 @@ public class StackBehaviourSteps {
     @When("I push an item $item")
     public void whenIPushAnItem(@Named("item") String item) { stack.push(item); System.out.println("Pushed"+item);}
 
-    @Then("I should count $expected")
-    public void thenIShouldCount(@Named("expected") int expected) {
+    @Then("I should count $expected $name $pass")
+    public void thenIShouldCount(@Named("expected") int expected,@Named("name") String name,@Named("pass") String pass) {
         int actual = stack.size();
         System.out.println("count"+actual);
+        System.out.println(" name " + name + " Pass " + pass);
         if (actual != expected) 
             throw new RuntimeException("expected:"+expected+";actual:"+actual);
     }

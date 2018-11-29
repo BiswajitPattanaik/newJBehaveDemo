@@ -1,1 +1,81 @@
 Testsuite: com.cavisson.biswajit.ChromeTestStory
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 60.223 sec
+------------- Standard Output ---------------
+Inside the log
+The test property for testcase is SimpleCreateScenario
+./testcases/SimpleCreateScenario/test_case.conf
+The test property for Story StoryFile is chrome_test_login.story
+Inside the log
+The test property for testcase is SimpleCreateScenario
+./testcases/SimpleCreateScenario/test_case.conf
+The test property for Story StoryFile is chrome_test_login.story
+Processing system properties {}
+Using controls EmbedderControls[batch=false,skip=false,generateViewAfterStories=true,ignoreFailureInStories=false,ignoreFailureInView=false,verboseFailures=false,verboseFiltering=false,storyTimeouts=300,threads=1,failOnStoryTimeout=false]
+
+(BeforeStories)
+
+Running story 
+
+()
+Scenario: 
+Examples:
+Given a chrometest with testcaseName firstTest
+And open Netstorm ProductUI for http://10.10.30.106
+When login with username <username> and password <userpass> for TestLogin
+Then home page login name should be <username> for casename LoginStepValidation
+Given create a scenario with name <scenario_name> project <project_name> subproject <sub_project_name> casename CreateScenarioTest
+And add group with groupname <groupname> , script <script_name> , project <project_name> , subproject <sub_project_name> , casename AddGroup
+Then quit chrometest
+
+|username|userpass|scenario_name|project_name|sub_project_name|groupname|script_name|
+|aditya|cavisson|new_netstorm_test1|default|default|Group1|hpd_tours|
+
+Example: {username=aditya, userpass=cavisson, scenario_name=new_netstorm_test1, project_name=default, sub_project_name=default, groupname=Group1, script_name=hpd_tours}
+test case name = firstTest
+The test 4j property for executableBinary is /opt/google/chrome/google-chrome
+The test 4j property for baseDir is /home/netstorm/biswajit/newJBehaveDemo
+The test 4j property for driverPath is chromedriver
+Using timeout for story  of 300 secs.
+***********************************Capabilities {browserName: chrome}***********************
+Given a chrometest with testcaseName firstTest
+And open Netstorm ProductUI for http://10.10.30.106
+Initial wait started
+Initial wait is over
+going to capture screenshot
+Completed capture screenshot
+Secondary wait started
+Secondary wait Completed
+When login with username aditya and password cavisson for TestLogin
+Inside assert aditya
+Then home page login name should be aditya for casename LoginStepValidation
+Initial wait started
+Initial wait is over
+going to capture screenshot
+Completed capture screenshot
+Secondary wait started
+Secondary wait Completed
+Given create a scenario with name new_netstorm_test1 project default subproject default casename CreateScenarioTest
+And add group with groupname Group1 , script hpd_tours , project default , subproject default , casename AddGroup
+Then quit chrometest
+
+
+
+
+(AfterStories)
+
+Generating reports view to '/home/netstorm/biswajit/newJBehaveDemo/target/jbehave-report' using formats '[stats, html, console]' and view properties '{navigator=ftl/jbehave-navigator.ftl, views=ftl/jbehave-views.ftl, reports=ftl/jbehave-reports.ftl, nonDecorated=ftl/jbehave-report-non-decorated.ftl, decorated=ftl/jbehave-report-decorated.ftl, maps=ftl/jbehave-maps.ftl}'
+Reports view generated with 3 stories (of which 0 pending) containing 3 scenarios (of which 0 pending)
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+Nov 29, 2018 4:58:41 PM org.openqa.selenium.remote.DesiredCapabilities chrome
+INFO: Using `new ChromeOptions()` is preferred to `DesiredCapabilities.chrome()`
+Starting ChromeDriver 2.43.600233 (523efee95e3d68b8719b3a1c83051aa63aa6b10d) on port 1024
+Only local connections are allowed.
+log4j:WARN No appenders could be found for logger (org.apache.http.client.protocol.RequestAddCookies).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Nov 29, 2018 4:58:47 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+------------- ---------------- ---------------
+
+Testcase: run took 60.056 sec

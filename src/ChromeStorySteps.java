@@ -72,8 +72,11 @@ public class ChromeStorySteps {
 	createScenarioCard = new CreateScenarioCard(driver,casename);
 	createScenarioCard.setProjectName(project);
 	createScenarioCard.setSubProjectName(subproject);
-createScenarioCard.setScenarioName(scenarioName);
+	createScenarioCard.setScenarioName(scenarioName);
 	createScenarioCard.executeCreateScenario();
+        try{
+           Thread.sleep(5000);
+        }catch(Exception e){e.printStackTrace();}
     }
     @Given("add group with groupname $groupname , script $scriptname , project $project , subproject $subproject , casename $casename")
     public void createGroup(@Named("groupname")String groupname ,@Named("scriptname")String scriptname , @Named("project") String project , @Named("subproject") String subproject , @Named("casename")String casename){

@@ -6,9 +6,7 @@ I want to define the behaviour of a custom stack
 Scenario:
 Given I have an empty stack
 When I push an item orange
-Then I should count 1
+Then I should count 1 <name> <pass>
 
-Scenario: 
-Given I have an empty stack
-When I push an item 'apple'
-Then I should count 1
+Examples:
+

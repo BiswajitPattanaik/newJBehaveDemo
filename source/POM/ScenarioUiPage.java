@@ -9,6 +9,8 @@ public class ScenarioUiPage extends PageModel{
 	WebElement addGroupButton;
 	@FindBy(ScenarioUiPage.openScenarioBtn.using="ScenarioUiPage.openScenarioBtn.value")
 	WebElement openScenariosBtn;
+        @FindBy(ScenarioUiPage.saveScenarioBtn.using="ScenarioUiPage.saveScenarioBtn.value")
+        WebElement saveScenarioBtn;
         public ScenarioUiPage(CavissonDriver driver,String testCaseName){
                 super(driver);
                 setTestCaseName(testCaseName);
@@ -19,6 +21,9 @@ public class ScenarioUiPage extends PageModel{
 	}
 	public void openScenarios(){
 		getDriver().click(openScenariosBtn,getTestCaseName());
-	}	
+	}
+        public void saveScenario(){
+                getDriver().click(saveScenarioBtn,getTestCaseName());
+        }	
 }
 

@@ -19,6 +19,8 @@ import java.util.Properties;
 import java.util.Iterator;
 import java.io.File;
 import java.io.FileInputStream;
+import org.jbehave.core.embedder.Embedder;
+import org.jbehave.core.embedder.EmbedderControls;
 
 public class StackBehaviourStory extends JUnitStory {
     private final static String TMP_TEST_CASE="test_case_name";
@@ -83,7 +85,23 @@ public class StackBehaviourStory extends JUnitStory {
         return new InstanceStepsFactory(configuration()
                                       , new StackBehaviourSteps());   
     }
-
+    public EmbedderControls createEmbedderControls() {
+        return new EmbedderControls()
+                .doSkip(true) //allows use of the @skip meta annotation on stories?
+                .doIgnoreFailureInStories(false)
+                .doIgnoreFailureInView(true)
+                .doGenerateViewAfterStories(false)
+                .doVerboseFailures(true)
+                .doVerboseFiltering(true)
+                .useStoryTimeoutInSecs(600L); //temporarily ensure timeouts are not an issue
+    }
+    @Override
+    public Embedder configuredEmbedder() {
+    	// TODO Auto-generated method stub
+    	Embedder emb = super.configuredEmbedder();
+    	emb.useEmbedderControls(createEmbedderControls());
+    	return emb;
+    }
 
 	
 }

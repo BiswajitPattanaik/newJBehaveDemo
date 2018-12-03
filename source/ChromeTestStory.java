@@ -18,6 +18,11 @@ import java.io.File;
 import java.util.Properties;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
+import org.jbehave.core.embedder.Embedder;
+import org.jbehave.core.embedder.EmbedderControls;
+
+
+
 public class ChromeTestStory extends JUnitStory {
     private final static String TMP_TEST_CASE="test_case_name";
     private final static String TEST_CASE="testcase";
@@ -80,7 +85,16 @@ public class ChromeTestStory extends JUnitStory {
         return new InstanceStepsFactory(configuration()
                                       , new ChromeStorySteps());   
     }
-
-
+    public EmbedderControls createEmbedderControls() {
+        return new EmbedderControls()
+                .useStoryTimeoutInSecs(600L); //temporarily ensure timeouts are not an issue
+    }
+    @Override
+    public Embedder configuredEmbedder() {
+    	// TODO Auto-generated method stub
+    	Embedder emb = super.configuredEmbedder();
+    	emb.useEmbedderControls(createEmbedderControls());
+    	return emb;
+    }
 	
 }

@@ -15,10 +15,13 @@
 <h3>Examples:</h3>
 <div class="step">Given a chrometest with testcaseName firstTest</div>
 <div class="step">And open Netstorm ProductUI for http://10.10.30.106</div>
-<div class="step">When login with username &lt;username&gt; and password &lt;userpass&gt; for TestLogin</div>
-<div class="step">Then home page login name should be &lt;username&gt; for casename LoginStepValidation</div>
-<div class="step">Given create a scenario with name &lt;scenario_name&gt; project &lt;project_name&gt; subproject &lt;sub_project_name&gt; casename CreateScenarioTest</div>
-<div class="step">And add group with groupname &lt;groupname&gt; , script &lt;script_name&gt; , project &lt;project_name&gt; , subproject &lt;sub_project_name&gt; , casename AddGroup</div>
+<div class="step">When login with username &lt;username&gt; and password &lt;userpass&gt;</div>
+<div class="step">Then home page login name should be &lt;username&gt;</div>
+<div class="step">Given create a scenario with name &lt;scenario_name&gt; project &lt;project_name&gt; subproject &lt;sub_project_name&gt;</div>
+<div class="step">Then add group with groupname &lt;groupname&gt; , script &lt;script_name&gt; , project &lt;project_name&gt; , subproject &lt;sub_project_name&gt;</div>
+<div class="step">And save the scenario</div>
+<div class="step">And move to TotalScenarios UI</div>
+<div class="step">Then delete scenario &lt;scenario_name&gt;</div>
 <div class="step">Then quit chrometest</div>
 <table>
 <thead>
@@ -34,10 +37,13 @@
 <h3 class="example">Example: {username=aditya, userpass=cavisson, scenario_name=new_netstorm_test1, project_name=default, sub_project_name=default, groupname=Group1, script_name=hpd_tours}</h3>
 <div class="step successful">Given a chrometest with testcaseName <span class="step parameter">firstTest</span></div>
 <div class="step successful">And open Netstorm ProductUI for <span class="step parameter">http://10.10.30.106</span></div>
-<div class="step successful">When login with username <span class="step parameter">aditya</span> and password <span class="step parameter">cavisson</span> for <span class="step parameter">TestLogin</span></div>
-<div class="step successful">Then home page login name should be <span class="step parameter">aditya</span> for casename <span class="step parameter">LoginStepValidation</span></div>
-<div class="step successful">Given create a scenario with name <span class="step parameter">new_netstorm_test1</span> project <span class="step parameter">default</span> subproject <span class="step parameter">default</span> casename <span class="step parameter">CreateScenarioTest</span></div>
-<div class="step successful">And add group with groupname <span class="step parameter">Group1</span> , script <span class="step parameter">hpd_tours</span> , project <span class="step parameter">default</span> , subproject <span class="step parameter">default</span> , casename <span class="step parameter">AddGroup</span></div>
+<div class="step successful">When login with username <span class="step parameter">aditya</span> and password <span class="step parameter">cavisson</span></div>
+<div class="step successful">Then home page login name should be <span class="step parameter">aditya</span></div>
+<div class="step successful">Given create a scenario with name <span class="step parameter">new_netstorm_test1</span> project <span class="step parameter">default</span> subproject <span class="step parameter">default</span></div>
+<div class="step successful">Then add group with groupname <span class="step parameter">Group1</span> , script <span class="step parameter">hpd_tours</span> , project <span class="step parameter">default</span> , subproject <span class="step parameter">default</span></div>
+<div class="step successful">And save the scenario</div>
+<div class="step successful">And move to TotalScenarios UI</div>
+<div class="step successful">Then delete scenario <span class="step parameter">new_netstorm_test1</span></div>
 <div class="step successful">Then quit chrometest</div>
 </div>
 </div>

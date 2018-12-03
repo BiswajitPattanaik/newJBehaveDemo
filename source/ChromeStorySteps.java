@@ -15,7 +15,7 @@ import java.io.FileInputStream;
 import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.remote.*;
 import org.openqa.selenium.*;
-
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -50,26 +50,27 @@ public class ChromeStorySteps {
     public void openURL(@Named("netstormBoxUI") String netstormBoxUI){
         driver.get( netstormBoxUI , suiteName);
     }
-    @When("login with username $username and password $password for $casename")
-    public void login(@Named("username") String userName , @Named("password") String passowrd , @Named("casename") String caseName){
+    @When("login with username $username and password $password")
+    public void login(@Named("username") String userName , @Named("password") String passowrd){
         //System.out.println("user name = " + userName + " , password = "+passowrd);
-        loginModel = new Login(driver,caseName);
+        loginModel = new Login(driver,"NetstormUserLogin");
         loginModel.setUserName(userName);
         loginModel.setUserPassword(passowrd);
         loginModel.executeLogin();
          
     }
-    @Then("home page login name should be $username for casename $casename")
-    public void homeCheckLogin(@Named("username") String userName, @Named("casename") String caseName){
-        homeModel = new Home(driver,caseName);
+    @Then("home page login name should be $username")
+    public void homeCheckLogin(@Named("username") String userName){
+        homeModel = new Home(driver,"AssertLoginUserName");
         homeModel.validateUserLogin(userName);        
     }
-    @Given("create a scenario with name $scenarioname project $project subproject $subproject casename $casename")
-    public void createScenario(@Named("scenarioname") String scenarioName,@Named("project") String project,@Named("subproject") String subproject,@Named("casename") String casename){
+    @Given("create a scenario with name $scenarioname project $project subproject $subproject")
+    public void createScenario(@Named("scenarioname") String scenarioName,@Named("project") String project,@Named("subproject") String subproject){
+        homeModel = new Home(driver,"OpenTotalScenariosUI");
         homeModel.openTotalScenariosUI();
-	totalScenariosPage = new TotalScenariosPage(driver,casename); 
+	totalScenariosPage = new TotalScenariosPage(driver,"CreateNewScenarioClick"); 
 	totalScenariosPage.executeCreateScenario();
-	createScenarioCard = new CreateScenarioCard(driver,casename);
+	createScenarioCard = new CreateScenarioCard(driver,"AddScenarioDetailsCard");
 	createScenarioCard.setProjectName(project);
 	createScenarioCard.setSubProjectName(subproject);
 	createScenarioCard.setScenarioName(scenarioName);
@@ -78,20 +79,49 @@ public class ChromeStorySteps {
            Thread.sleep(5000);
         }catch(Exception e){e.printStackTrace();}
     }
-    @Given("add group with groupname $groupname , script $scriptname , project $project , subproject $subproject , casename $casename")
-    public void createGroup(@Named("groupname")String groupname ,@Named("scriptname")String scriptname , @Named("project") String project , @Named("subproject") String subproject , @Named("casename")String casename){
-        scenarioUiPage = new ScenarioUiPage(driver,casename);
+    @Then("add group with groupname $groupname , script $scriptname , project $project , subproject $subproject")
+    public void createGroup(@Named("groupname")String groupname ,@Named("scriptname")String scriptname , @Named("project") String project , @Named("subproject") String subproject){
+        scenarioUiPage = new ScenarioUiPage(driver,"ClickOnAddGroupBtn");
         scenarioUiPage.clickOnAddGroupButton();
-        groupAddCard = new GroupAddCard(driver,casename);
+        groupAddCard = new GroupAddCard(driver,"AddWholeNewGroup");
         groupAddCard.setProjectName(project);
         groupAddCard.setSubProjectName(subproject);
         groupAddCard.setScriptName(scriptname);
         groupAddCard.setGroupName(groupname);
         groupAddCard.executeAddGroup();
     }
+    @Then("save the scenario")
+    public void saveScenario(){
+        scenarioUiPage = new ScenarioUiPage(driver,"SavingTheScenario");
+        scenarioUiPage.saveScenario();
+    }
+    @Then("move to TotalScenarios UI")
+    public void openTotalScenarioUI(){
+        scenarioUiPage = new ScenarioUiPage(driver,"OpenTotalScenarioUi");
+        scenarioUiPage.openScenarios();
+    }
     @Then("quit chrometest")
     public void quitTest(){
         driver.quit();
+    }
+    @Then("delete scenario $scenario_name")
+    public void deleteScenario(@Named("scenario_name")String scenarioName){
+	totalScenariosPage = new TotalScenariosPage(driver,"DeleteScenario"); 
+	totalScenariosPage.setScenarioName(scenarioName);
+        totalScenariosPage.enterScenarioNameToSearch();
+        totalScenariosPage.applySearch();
+        try{
+            totalScenariosPage.selectScenarioToDelete();
+            totalScenariosPage.executeDeleteScenario();
+        }catch(Exception e){System.out.println(e.getMessage());}
+        try{
+	    Thread.sleep(3000);
+	}catch(Exception e){System.out.println("Exception Occured");}
+    }
+    @Then("open total scenarios UI")
+    public void openTotalScenariosUI(){
+        homeModel = new Home(driver,"OpenTotalScenariosUI");
+        homeModel.openTotalScenariosUI();
     }
     private void setUp(){
         Properties p = new Properties();
@@ -163,6 +193,8 @@ public class ChromeStorySteps {
         options.addArguments("--disable-notifications");
         options.addArguments("disable-geolocation");
         options.addArguments("ignore-certificate-errors");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
         System.out.println("***********************************"+options+"***********************");
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         WebDriver driver = new ChromeDriver(capabilities);

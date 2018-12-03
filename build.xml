@@ -10,10 +10,10 @@
 
 <target name="start-test">
     <loadfile property="suite.file" srcFile="./testsuites/${suiteName}.conf"/>
-    <for list="${suite.file}" param="case.name">
+    <for list="${suite.file}" param="case.name" delimiter="${line.separator}">
         <sequential>
             <echo>@{case.name}</echo>
-            <echo file="./test_case_name">testcase=@{case.name}</echo>
+            <echo file="./test_case_name" append="false">testcase=@{case.name}</echo>
             <antcall target="junit"/>
         </sequential>    
     </for>

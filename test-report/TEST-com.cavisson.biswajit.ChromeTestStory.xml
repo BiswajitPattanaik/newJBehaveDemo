@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="netstorm-TECRA-C50-C" name="com.cavisson.biswajit.ChromeTestStory" skipped="0" tests="1" time="60.223" timestamp="2018-11-29T11:28:41">
+<testsuite errors="0" failures="0" hostname="netstorm-TECRA-C50-C" name="com.cavisson.biswajit.ChromeTestStory" skipped="0" tests="1" time="64.496" timestamp="2018-12-03T11:13:34">
   <properties>
     <property name="ant.project.invoked-targets" value="junit" />
     <property name="ant.file.JUnitDemo" value="/home/netstorm/biswajit/newJBehaveDemo/build.xml" />
@@ -17,7 +17,7 @@
     <property name="user.country" value="US" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="sun.os.patch.level" value="unknown" />
-    <property name="suite.file" value="SimpleCreateScenario&#xa;" />
+    <property name="suite.file" value="SimpleCreateScenario&#xa;SimpleCreateScenario2Groups&#xa;SimpleDeleteScenario&#xa;SimpleCreateScenarioDeleteScenario&#xa;" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
     <property name="user.dir" value="/home/netstorm/biswajit/newJBehaveDemo" />
     <property name="java.runtime.version" value="1.8.0_121-b13" />
@@ -69,17 +69,17 @@
     <property name="sun.desktop" value="gnome" />
     <property name="sun.cpu.isalist" value="" />
   </properties>
-  <testcase classname="com.cavisson.biswajit.ChromeTestStory" name="run" time="60.061" />
+  <testcase classname="com.cavisson.biswajit.ChromeTestStory" name="run" time="64.391" />
   <system-out><![CDATA[Inside the log
-The test property for testcase is SimpleCreateScenario
-./testcases/SimpleCreateScenario/test_case.conf
+The test property for testcase is SimpleCreateScenarioDeleteScenario
+./testcases/SimpleCreateScenarioDeleteScenario/test_case.conf
 The test property for Story StoryFile is chrome_test_login.story
 Inside the log
-The test property for testcase is SimpleCreateScenario
-./testcases/SimpleCreateScenario/test_case.conf
+The test property for testcase is SimpleCreateScenarioDeleteScenario
+./testcases/SimpleCreateScenarioDeleteScenario/test_case.conf
 The test property for Story StoryFile is chrome_test_login.story
 Processing system properties {}
-Using controls EmbedderControls[batch=false,skip=false,generateViewAfterStories=true,ignoreFailureInStories=false,ignoreFailureInView=false,verboseFailures=false,verboseFiltering=false,storyTimeouts=300,threads=1,failOnStoryTimeout=false]
+Using controls EmbedderControls[batch=false,skip=false,generateViewAfterStories=true,ignoreFailureInStories=false,ignoreFailureInView=false,verboseFailures=false,verboseFiltering=false,storyTimeouts=600,threads=1,failOnStoryTimeout=false]
 
 (BeforeStories)
 
@@ -90,10 +90,13 @@ Scenario:
 Examples:
 Given a chrometest with testcaseName firstTest
 And open Netstorm ProductUI for http://10.10.30.106
-When login with username <username> and password <userpass> for TestLogin
-Then home page login name should be <username> for casename LoginStepValidation
-Given create a scenario with name <scenario_name> project <project_name> subproject <sub_project_name> casename CreateScenarioTest
-And add group with groupname <groupname> , script <script_name> , project <project_name> , subproject <sub_project_name> , casename AddGroup
+When login with username <username> and password <userpass>
+Then home page login name should be <username>
+Given create a scenario with name <scenario_name> project <project_name> subproject <sub_project_name>
+Then add group with groupname <groupname> , script <script_name> , project <project_name> , subproject <sub_project_name>
+And save the scenario
+And move to TotalScenarios UI
+Then delete scenario <scenario_name>
 Then quit chrometest
 
 |username|userpass|scenario_name|project_name|sub_project_name|groupname|script_name|
@@ -104,8 +107,8 @@ test case name = firstTest
 The test 4j property for executableBinary is /opt/google/chrome/google-chrome
 The test 4j property for baseDir is /home/netstorm/biswajit/newJBehaveDemo
 The test 4j property for driverPath is chromedriver
-Using timeout for story  of 300 secs.
 ***********************************Capabilities {browserName: chrome}***********************
+Using timeout for story  of 600 secs.
 Given a chrometest with testcaseName firstTest
 And open Netstorm ProductUI for http://10.10.30.106
 Initial wait started
@@ -114,17 +117,20 @@ going to capture screenshot
 Completed capture screenshot
 Secondary wait started
 Secondary wait Completed
-When login with username aditya and password cavisson for TestLogin
+When login with username aditya and password cavisson
 Inside assert aditya
-Then home page login name should be aditya for casename LoginStepValidation
+Then home page login name should be aditya
 Initial wait started
 Initial wait is over
 going to capture screenshot
 Completed capture screenshot
 Secondary wait started
 Secondary wait Completed
-Given create a scenario with name new_netstorm_test1 project default subproject default casename CreateScenarioTest
-And add group with groupname Group1 , script hpd_tours , project default , subproject default , casename AddGroup
+Given create a scenario with name new_netstorm_test1 project default subproject default
+Then add group with groupname Group1 , script hpd_tours , project default , subproject default
+And save the scenario
+And move to TotalScenarios UI
+Then delete scenario new_netstorm_test1
 Then quit chrometest
 
 
@@ -135,14 +141,14 @@ Then quit chrometest
 Generating reports view to '/home/netstorm/biswajit/newJBehaveDemo/target/jbehave-report' using formats '[stats, html, console]' and view properties '{navigator=ftl/jbehave-navigator.ftl, views=ftl/jbehave-views.ftl, reports=ftl/jbehave-reports.ftl, nonDecorated=ftl/jbehave-report-non-decorated.ftl, decorated=ftl/jbehave-report-decorated.ftl, maps=ftl/jbehave-maps.ftl}'
 Reports view generated with 3 stories (of which 0 pending) containing 3 scenarios (of which 0 pending)
 ]]></system-out>
-  <system-err><![CDATA[Nov 29, 2018 4:58:41 PM org.openqa.selenium.remote.DesiredCapabilities chrome
+  <system-err><![CDATA[Dec 03, 2018 4:43:35 PM org.openqa.selenium.remote.DesiredCapabilities chrome
 INFO: Using `new ChromeOptions()` is preferred to `DesiredCapabilities.chrome()`
 Starting ChromeDriver 2.43.600233 (523efee95e3d68b8719b3a1c83051aa63aa6b10d) on port 1024
 Only local connections are allowed.
 log4j:WARN No appenders could be found for logger (org.apache.http.client.protocol.RequestAddCookies).
 log4j:WARN Please initialize the log4j system properly.
 log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
-Nov 29, 2018 4:58:47 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Dec 03, 2018 4:43:36 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: OSS
 ]]></system-err>
 </testsuite>
